@@ -9,7 +9,7 @@ public class Jumper {
     public int jumps(int k, int j) {
         Integer maxJumpCustom = k / j;
         Integer remainder = k % j;
-        
+
         return (maxJumpCustom + remainder);
     }
 }
