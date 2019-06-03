@@ -32,14 +32,14 @@ public class ArrayUtils {
      */
     //Casting error, right answer thoe ?
     public static Object[] removeValue(Object[] objectArray, Object objectToRemove) {
-        ArrayList<Object> workingCopy = new ArrayList<>();
+        ArrayList<Integer> workingCopy = new ArrayList<>();
 
         for(int i = 0; i<objectArray.length; i++){
             if(!objectArray[i].equals(objectToRemove)){
-                workingCopy.add(objectArray[i]);
+                workingCopy.add((Integer)objectArray[i]);
             }
         }
-        Object [] last = new Object[workingCopy.size()];
+        Integer [] last = new Integer[workingCopy.size()];
         workingCopy.toArray(last);
         for (Object i: last) System.out.println(i);
 
@@ -52,7 +52,12 @@ public class ArrayUtils {
      * given an array of objects, named `objectArray` return the most frequently occuring object in the array
      */
     public static Object getMostCommon(Object[] objectArray) {
-        return null;
+        Integer maxOccurence = (Integer)objectArray[0];
+        for (Integer i : (Integer[])objectArray) {
+            if(getNumberOfOccurrences(objectArray, i) > getNumberOfOccurrences(objectArray, maxOccurence))
+                maxOccurence = i;
+        }
+        return maxOccurence;
     }
 
 
@@ -62,7 +67,16 @@ public class ArrayUtils {
      * given an array of objects, named `objectArray` return the least frequently occuring object in the array
      */
     public static Object getLeastCommon(Object[] objectArray) {
-        return null;
+        System.out.println(getNumberOfOccurrences(objectArray, objectArray[2]));
+        Integer leastCommon = (Integer)objectArray[0];
+
+        for (Integer i : (Integer[]) objectArray) {
+            if(getNumberOfOccurrences(objectArray, i) < getNumberOfOccurrences(objectArray, leastCommon))
+                leastCommon = i;
+
+
+        }
+        return leastCommon;
     }
 
     /**
@@ -71,18 +85,17 @@ public class ArrayUtils {
      * @return an array containing all elements in `objectArray` and `objectArrayToAdd`
      * given two arrays `objectArray` and `objectArrayToAdd`, return an array containing all elements in `objectArray` and `objectArrayToAdd`
      */
-    //correct answer bad casting ?
     public static Object[] mergeArrays(Object[] objectArray, Object[] objectArrayToAdd) {
         Integer totalLength = objectArray.length + objectArrayToAdd.length;
         Integer counter = 0;
-        Object [] result = new Object[totalLength];
+        Integer [] result = new Integer[totalLength];
 
         for (int i = 0; i < totalLength; i++) {
             if (i < objectArray.length){
-                result[i] = objectArray[i];
+                result[i] = (Integer) objectArray[i];
             }
             else {
-                result[i] = objectArrayToAdd[counter];
+                result[i] = (Integer)objectArrayToAdd[counter];
                 counter++;
             }
             System.out.print(result[i]);
