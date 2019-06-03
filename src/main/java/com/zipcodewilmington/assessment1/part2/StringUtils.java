@@ -1,5 +1,9 @@
 package com.zipcodewilmington.assessment1.part2;
 
+import com.zipcodewilmington.assessment1.part1.BasicStringUtils;
+
+import java.util.ArrayList;
+
 /**
  * Created by leon on 2/16/18.
  */
@@ -10,9 +14,7 @@ public class StringUtils {
      * @return an array of strings, representative of each word in the sentence
      * given a string containing words delimited by spaces, representative of a sentence, return an array of strings, each element representative of a respective word in the sentence
      */
-    public static String[] getWords(String sentence) {
-        return null;
-    }
+    public static String[] getWords(String sentence) { return sentence.split(" "); }
 
 
     /**
@@ -20,9 +22,7 @@ public class StringUtils {
      * @return the first word in the specified sentence
      * given a string containing words delimited by spaces, representative of a sentence, return the first word of the sentence
      */
-    public static String getFirstWord(String sentence) {
-        return null;
-    }
+    public static String getFirstWord(String sentence) { return getWords(sentence)[0]; }
 
     /**
      * @param sentence a string containing words delimited by spaces, representative of a sentence
@@ -30,7 +30,7 @@ public class StringUtils {
      * given a string containing words delimited by spaces, representative of a sentence, return the first word with identical contents in reverse order
      */
     public static String reverseFirstWord(String sentence) {
-        return null;
+        return BasicStringUtils.reverse(getFirstWord(sentence));
     }
 
     /**
@@ -39,7 +39,7 @@ public class StringUtils {
      * given a string containing words delimited by spaces, representative of a sentence, return the first word with identical contents in reverse order with the first character capitalized
      */
     public static String reverseFirstWordThenCamelCase(String sentence) {
-        return null;
+        return BasicStringUtils.reverseThenCamelCase(getFirstWord(sentence));
     }
 
 
@@ -50,7 +50,15 @@ public class StringUtils {
      * given a string and index, return an identical string excluding the character at the specified index
      */
     public static String removeCharacterAtIndex(String str, int index) {
-        return null;
+        String[] lettrs = str.split("");
+        ArrayList<String> newLettrs = new ArrayList<>();
+
+        for (int i = 0; i <lettrs.length ; i++) {
+            if(! (i == index) )
+                newLettrs.add(lettrs[i]);
+        }
+
+        return String.valueOf(String.join("", newLettrs));
     }
 
 }
