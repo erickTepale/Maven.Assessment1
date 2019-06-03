@@ -45,12 +45,12 @@ public class PetOwner {
      * @param pet pet to be removed from the composite collection Pets
      */
     public void removePet(Pet pet) {
-//        ArrayList<Pet> fresh = new ArrayList<>();
-//        for (int i = 0; i <pets.length; i++) {
-//            if(!( pet.getName().equals(pets[i].getName())) )
-//                fresh.add(pets[i]);
-//        }
-//        fresh.toArray(pets);
+        ArrayList<Pet> fresh = new ArrayList<>();
+        for (int i = 0; i <petsArr.length; i++) {
+            if(!( pet.getName().equals(petsArr[i].getName())) )
+                fresh.add(petsArr[i]);
+        }
+        fresh.toArray(petsArr);
 
     }
 
@@ -59,14 +59,24 @@ public class PetOwner {
      * @return true if I own this pet
      */
     public Boolean isOwnerOf(Pet pet) {
-        return null;
+        for (Pet i: petsArr){
+            if (i == pet)
+                return true;
+        }
+
+        return false;
     }
 
     /**
      * @return the age of the Pet object whose age field is the lowest amongst all Pets in this class
      */
     public Integer getYoungetPetAge() {
-        return null;
+        Integer youngestAge = petsArr[0].getAge();
+        for (int i = 0; i < petsArr.length ; i++) {
+            if(petsArr[i].getAge() < youngestAge)
+                youngestAge = petsArr[i].getAge();
+        }
+        return youngestAge;
     }
 
 
@@ -76,7 +86,12 @@ public class PetOwner {
      * @return the age of the Pet object whose age field is the highest amongst all Pets in this class
      */
     public Integer getOldestPetAge() {
-        return null;
+        Integer oldAge = petsArr[0].getAge();
+        for (int i = 0; i < petsArr.length ; i++) {
+            if(petsArr[i].getAge() > oldAge)
+                oldAge = petsArr[i].getAge();
+        }
+        return oldAge;
     }
 
 
@@ -84,7 +99,11 @@ public class PetOwner {
      * @return the sum of ages of Pet objects stored in this class divided by the number of Pet object
      */
     public Float getAveragePetAge() {
-        return null;
+        Integer sum = 0;
+        for (int i = 0; i < petsArr.length; i++) {
+            sum += petsArr[i].getAge();
+        }
+        return (float)(sum / petsArr.length);
     }
 
     /**
@@ -105,6 +124,6 @@ public class PetOwner {
      * @return array representation of animals owned by this PetOwner
      */
     public Pet[] getPets() {
-        return null;
+        return petsArr;
     }
 }
